@@ -7,10 +7,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
+<x-navbar/>
+@if(session('message'))
 
+<div class="alert alert-success">{{session('message')}}</div>
 
-<x-navbar></x-navbar>
-
+@endif
 
 {{$slot}}
 </body>

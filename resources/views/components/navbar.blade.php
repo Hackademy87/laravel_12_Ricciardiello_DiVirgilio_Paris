@@ -11,7 +11,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="">CREA PRODOTTI</a>
+          <a class="nav-link" href="{{route('product.create')}}">CREA PRODOTTI</a>
         </li>
        
         <li class="nav-item dropdown">

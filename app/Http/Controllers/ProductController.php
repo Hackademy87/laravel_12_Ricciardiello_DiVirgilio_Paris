@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view ('product.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view ('product.create');
     }
 
     /**
@@ -28,7 +28,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create(
+            [
+                'name' => $request->input('name'),
+                'price' => $request->input('price'),
+                'img' => $request->file('img')->store('public/ImgProduct')
+            ]
+            );
+
+            return redirect()->route('product.create')->with('message', 'Prodotto inserito con successo..(Lorenzo NON)');
     }
 
     /**
