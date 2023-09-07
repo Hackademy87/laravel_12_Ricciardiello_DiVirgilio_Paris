@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Category;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Gender;
+
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,11 +19,11 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        $categories = ['accessori','camicie', 'scarpe', 'borse', 'pantaloni'];
+        $genders = ['uomo','donna'];
 
-        foreach($categories as $category){
-            Category::create([
-                'name'=>$category
+        foreach($genders as $gender){
+            Gender::create([
+                'name'=>$gender
             ]);
         }
     }

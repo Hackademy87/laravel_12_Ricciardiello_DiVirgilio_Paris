@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gender;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+
+
+    public function welcome(){
+
+        return view('welcome');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +29,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view ('product.create');
+        $categories = Category::all();
+        $genders = Gender::all();
+        return view ('product.create',compact('categories','genders'));
     }
 
     /**
@@ -32,6 +43,8 @@ class ProductController extends Controller
             [
                 'name' => $request->input('name'),
                 'price' => $request->input('price'),
+                'category_id'=>$request->input('category_id'),
+                'gender_id'=> $request->input('gender_id'),
                 'img' => $request->file('img')->store('public/ImgProduct')
             ]
             );
@@ -70,4 +83,25 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function indexByCategory(Category $category){
+        
+        $products = $category->products;
+
+     return view('product.categorie',compact('products'));
+    }
+
+
+
+
+public function filterBygender(Gender $gender ,Category $category){
+$products = $category->products->where('gender_id',$gender->id); 
+return view('product.generi',compact('products'));
+}
+
+
+
+
+
 }

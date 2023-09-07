@@ -7,40 +7,32 @@
         <input type="text" name="name" class="form-control">
 
     </div>
-    <!-- <div class="mb-3">
-        <label  class="form-label">Categoria</label>
-        <select class="form-control" name="category_id">
-
-        <option value="null" disabled >seleziona una categoria</option>
-        
-        <option value=""></option>
-
-    </select>
-    </div> -->
 
 
-    <!-- <div class="mb-3">
-        <label  class="form-label">materiale</label>
-        <select class="form-control" name="materialId[]" multiple>
+    <div class="mb-3">
+    <label  class="form-label">Categoria</label>
+    <select class="form-control" name="category_id">
 
-        <option value="null" disabled >seleziona i materiali</option>
-       
-        <option value=""></option>
-        
-    </select>
-    </div> -->
+    <option value="null" disabled >seleziona una categoria</option>
+    @foreach($categories as $category)
+    <option value="{{$category->id}}">{{$category->name}}</option>
+    @endforeach
+  </select>
+  </div>
 
 
-    <!-- <div class="mb-3">
-        <label  class="form-label">Genere</label>
-        <select class="form-control" name="category_id">
+   <div class="mb-3">
+    <label  class="form-label">Sesso</label>
+    <select class="form-control" name="gender_id">
+    <option value="null" disabled >seleziona un genere</option>
+    @foreach($genders as $gender)
+    <option value="{{$gender->id}}">{{$gender->name}}</option>
+    @endforeach
+  </select>
+  </div>
 
-        <option value="null" disabled >seleziona un genere</option>
-        
-        <option value=""></option>
-        
-    </select>
-    </div> -->
+
+   
 
     <div class="mb-3">
         <label  class="form-label">Prezzo</label>
