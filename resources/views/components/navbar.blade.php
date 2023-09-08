@@ -30,30 +30,45 @@
       </ul>
 
 
-<form class="d-flex" role="search" action="" method="GET">
-        <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-       
+
+      @auth 
+          @if(Auth::user()->is_admin == true)
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('admin.dashboard') }}">Amministrazione</a>
+            </li>
+          @endif
           <li class="nav-item">
-            <a class="btn btn-primary" href="">Login</a>
+            <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-secondary mx-2" href="">Registrati</a>
-          </li>
-       
-          <li class="nav-item">
-            
-          </li>
-          <li class="nav-item">
-            <form action="" method="POST">
-             
-              <button class="btn btn-secondary mx-2" >Logout</button>
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button class="btn btn-secondary">Logout</button>
             </form>
           </li>
-       
+        @endauth
+        @guest
+          <li class="">
+            <a class="btn-success btn" href="{{ route('register') }}">Registrati</a>
+          </li>
+          <li class="">
+            <a class="btn-success btn" href="{{ route('login') }}">Accedi</a>
+          </li>
+        @endguest
       </ul>
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div>

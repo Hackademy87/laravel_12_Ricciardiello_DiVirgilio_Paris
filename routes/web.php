@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,10 @@ Route::post('product/store',[ProductController::class, 'store'])->name('product.
 Route::get('product/category/{category}',[ProductController::class,'indexByCategory'])->name('product.byCategory');
 
 Route::get('product/gender/{gender}/{category}',[ProductController::class,'filterBygender'])->name('product.gender');
+
+
+
+// ROTTE AMMINISTRAZIONE
+Route::middleware(['is.admin'])->group(function () {
+Route::get('/admin',[AdminController::class,'dashboard'])->name('admin.dashboard');
+});
